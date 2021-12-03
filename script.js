@@ -1,5 +1,6 @@
 // variables
 let contacts = document.querySelector('.nav-home')
+let createnewcontact = document.querySelector('.nav')
 
 //1st eventlistener
 contacts.addEventListener("click", (e) => {
@@ -8,6 +9,14 @@ contacts.addEventListener("click", (e) => {
     renderIndex(inside)
     e.preventDefault()
 
+})
+
+//2nd eventlistener
+createnewcontact.addEventListener("click", (e) => {
+    let inside = contact
+    cleanupindex()
+    renderCreate(inside)
+    e.preventDefault()
 })
 
 // Index Page
