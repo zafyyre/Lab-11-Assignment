@@ -4,19 +4,18 @@ let createnewcontact = document.querySelector('.nav')
 
 //1st eventlistener
 contacts.addEventListener("click", (e) => {
+    e.preventDefault()
     let inside = contactList
     cleanupindex()
     renderIndex(inside)
-    e.preventDefault()
-
 })
 
 //2nd eventlistener
 createnewcontact.addEventListener("click", (e) => {
+    e.preventDefault()
     let inside = contact
     cleanupindex()
     renderCreate(inside)
-    e.preventDefault()
 })
 
 // Index Page
@@ -50,11 +49,12 @@ function createSingleIndex(contact) {
     let main = document.querySelector(".main")
     main.appendChild(a)
     a.addEventListener("click", (e) => {
+        e.preventDefault()
         for (let i = 0; i in contactList; i++) {
             if (p.textContent = contactList[i]) {
                 cleanupindex()
                 renderView(contact)
-                e.preventDefault()
+
             }
         }
     })
@@ -156,9 +156,9 @@ function renderView(contact) {
     let main = document.querySelector('div');;
     main.appendChild(contactinfo)
     buttonclose.addEventListener("click", (e) => {
+        e.preventDefault()
         cleanUpView()
         renderIndex(contactList)
-        e.preventDefault()
     })
 }
 
@@ -298,5 +298,14 @@ function renderCreate() {
         renderIndex(contactList)
         e.preventDefault()
     })
+    save.addEventListener("click", (e) => {
+        e.preventDefault()
+        let info = {
+            name: contactname.value,
+            phone: contactphone.value,
+            email: contactemail.value,
+            address: contactaddress.value
 
-}
+        }
+    })
+}   
