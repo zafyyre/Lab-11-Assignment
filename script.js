@@ -155,6 +155,11 @@ function renderView(contact) {
 
     let main = document.querySelector('div');;
     main.appendChild(contactinfo)
+    buttonclose.addEventListener("click", (e) => {
+        cleanUpView()
+        renderIndex(contactList)
+        e.preventDefault()
+    })
 }
 
 function cleanUpCreate() {
