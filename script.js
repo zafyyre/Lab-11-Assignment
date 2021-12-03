@@ -5,34 +5,24 @@ let createnewcontact = document.querySelector('.nav')
 //1st eventlistener
 contacts.addEventListener("click", (e) => {
     e.preventDefault()
-    let inside = contactList
     cleanupindex()
-    renderIndex(inside)
+    renderIndex(contactList)
 })
 
 //2nd eventlistener
 createnewcontact.addEventListener("click", (e) => {
     e.preventDefault()
-    let inside = contact
     cleanupindex()
-    renderCreate(inside)
+    renderCreate()
 })
 
 // Index Page
 function cleanupindex() {
-    const main = document.querySelector(".main")
-    const p = document.querySelector('p'); {
+    const main = document.querySelector(".main"); {
         while (main.firstChild) {
             main.removeChild(main.firstChild);
         }
     }
-}
-
-const contact = {
-    name: "Roberta Dobbs",
-    phone: "778-555-1234",
-    address: "101 Main St, Anytown, USA",
-    email: "subgenius@slack.example.com",
 }
 
 function createSingleIndex(contact) {
@@ -46,18 +36,21 @@ function createSingleIndex(contact) {
     let p = document.createElement('p')
     div.appendChild(p);
     p.textContent = `${contact["name"]}`;
+    
     let main = document.querySelector(".main")
     main.appendChild(a)
+    
     a.addEventListener("click", (e) => {
         e.preventDefault()
-        for (let i = 0; i in contactList; i++) {
-            if (p.textContent = contactList[i]) {
+        for (let i = 0; i < contactList.length; i++) {
+            if (p.textContent == contactList[i].name) {
                 cleanupindex()
-                renderView(contact)
+                renderView(contactList[i])
 
             }
         }
     })
+    return a
 }
 
 let contactList = [{
@@ -74,26 +67,17 @@ let contactList = [{
     },
     {
         name: "Zaafir Ali",
-        phone: "911",
-        address: "The dumpster",
-        email: "waaf21@hotmail.com"
+        phone: "604-123-1234",
+        address: "535 Rosemary Road",
+        email: "zaf17@hotmail.com"
     }
 ]
 
 function renderIndex(contactList) {
+    let main = document.querySelector(".main");
+    
     for (let i = 0; i < contactList.length; i++) {
-        let a = document.createElement('a');
-        a.setAttribute('href', 'page2.html');
-
-        let div = document.createElement('div');
-        div.setAttribute('class', 'contact');
-        a.appendChild(div);
-
-        let p = document.createElement('p')
-        div.appendChild(p)
-        p.textContent = `${contactList[i]["name"]}`;
-        let main = document.querySelector(".main");
-        main.appendChild(a);
+        main.appendChild(createSingleIndex(contactList[i]))
     }
 }
 
@@ -155,6 +139,7 @@ function renderView(contact) {
 
     let main = document.querySelector('div');;
     main.appendChild(contactinfo)
+    
     buttonclose.addEventListener("click", (e) => {
         e.preventDefault()
         cleanUpView()
@@ -165,7 +150,7 @@ function renderView(contact) {
 function cleanUpCreate() {
     const main = document.querySelector(".main");
     const button = document.querySelector("#extraphonefield");
-    if (button.textContent = '+')
+    if (button.textContent == '+')
         while (main.firstChild) {
             main.firstChild.remove();
         }
@@ -300,12 +285,16 @@ function renderCreate() {
     })
     save.addEventListener("click", (e) => {
         e.preventDefault()
-        let info = {
+        const info = {
             name: contactname.value,
             phone: contactphone.value,
             email: contactemail.value,
             address: contactaddress.value
 
         }
+        contactList.push(info)
+        const lastitem = contactList[contactList.length - 1]
+        cleanUpCreate()
+        renderView(lastitem)
     })
 }   
