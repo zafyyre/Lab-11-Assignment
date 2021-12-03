@@ -293,5 +293,10 @@ function renderCreate() {
 
     let main = document.querySelector(".main")
     main.appendChild(contactedit);
+    cancel.addEventListener("click", (e) => {
+        cleanUpCreate()
+        renderIndex(contactList)
+        e.preventDefault()
+    })
 
 }
