@@ -22,8 +22,7 @@ createnewcontact.addEventListener("click", (e) => {
 // Index Page
 function cleanupindex() {
     const main = document.querySelector(".main")
-    const p = document.querySelector('p');
-    if (p.textContent = 'Barry Allen') {
+    const p = document.querySelector('p'); {
         while (main.firstChild) {
             main.removeChild(main.firstChild);
         }
@@ -38,9 +37,8 @@ const contact = {
 }
 
 function createSingleIndex(contact) {
-
     let a = document.createElement('a');
-    a.setAttribute('href', 'page2.html');
+    a.setAttribute('href', 'page3.html');
 
     let div = document.createElement('div');
     div.setAttribute('class', 'contact');
@@ -49,8 +47,17 @@ function createSingleIndex(contact) {
     let p = document.createElement('p')
     div.appendChild(p);
     p.textContent = `${contact["name"]}`;
-    return a
-
+    let main = document.querySelector(".main")
+    main.appendChild(a)
+    a.addEventListener("click", (e) => {
+        for (let i = 0; i in contactList; i++) {
+            if (p.textContent = contactList[i]) {
+                cleanupindex()
+                renderView(contact)
+                e.preventDefault()
+            }
+        }
+    })
 }
 
 let contactList = [{
